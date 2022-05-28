@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="<?= site_url('Dashboard/') ?>" class="brand-link">
       <img src="<?= site_url('assets/') ?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">BAC Monitoring App</span>
+      <span class="brand-text font-weight-light"><?php echo $_ENV['DASH_SIDEBAR_TITLE']?></span>
     </a>
 
     <!-- Sidebar -->

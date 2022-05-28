@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/default') ?>
+<?= $this->extend('layouts/dashboard/default') ?>
 <?= $this->section('title') ?>Dashboard<?= $this->endSection() ?>
 <?= $this->section('header') ?>Starter Page<?= $this->endSection() ?>
 
