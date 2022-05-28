@@ -4,7 +4,7 @@
 <div class="login-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>BAC</b>Monitoring</a>
+      <a href="<?= site_url('/') ?>" class="h1"><b>BAC</b>Monitoring</a>
         <p>
         <small><?php echo $_ENV['DIVISION_OFFICE']; ?></small>
         </p>

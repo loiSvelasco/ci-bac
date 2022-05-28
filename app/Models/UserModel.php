@@ -6,12 +6,12 @@ class UserModel extends \CodeIgniter\Model
 {
     protected $table = 'user';
     protected $allowedFields = ['name', 'email', 'password'];
-    protected $returnType = 'App/Entities/User';
+    protected $returnType = 'App\Entities\User';
     protected $useTimestamps = true;
 
     protected $beforeInsert = ['hashPassword'];
     protected $beforeUpdate = ['hashPassword'];
-    
+
     protected $validationRules = [
         'name' => 'required',
         'email' => 'required|valid_email|is_unique[user.email]',
@@ -39,5 +39,11 @@ class UserModel extends \CodeIgniter\Model
         }
 
         return $data;
+    }
+
+    public function findByEmail($email)
+    {
+        return $this->where('email', $email)
+                    ->first();
     }
 }
