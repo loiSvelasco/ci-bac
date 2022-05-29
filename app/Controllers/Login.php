@@ -19,7 +19,10 @@ class Login extends BaseController
 
         if($auth->login($email, $password, $remember_me))
         {
-            return redirect()->to('/Dashboard')
+            $redirect_url = session('redirect_url') ?? '/Dashboard';
+            unset($_SESSION['redirect_url']);
+
+            return redirect()->to($redirect_url)
                              ->with('info', 'Successfully logged in')
                              ->withCookies();
         }

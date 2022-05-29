@@ -17,7 +17,6 @@
                     <a href="#" class="card-link">Another link</a>
                 </div>
             </div>
-
             <div class="card card-primary card-outline">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
@@ -29,9 +28,7 @@
                     <a href="#" class="card-link">Another link</a>
                 </div>
             </div>
-            <!-- /.card -->
         </div>
-        <!-- /.col-md-6 -->
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
@@ -56,6 +53,6 @@
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
-        </div><!-- /.col-md-6 -->
-    </div><!-- /.row -->
+        </div>
+    </div>
 <?= $this->endSection() ?>

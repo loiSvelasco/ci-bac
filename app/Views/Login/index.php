@@ -7,14 +7,14 @@
     <div class="card-header text-center">
       <a href="<?= site_url('/') ?>" class="h1"><b>BAC</b>Monitoring</a>
       <p>
-        <small><?php echo $_ENV['DIVISION_OFFICE']; ?></small>
+        <small><?php echo $_ENV['APP_DESCRIPTION']; ?></small>
       </p>
     </div>
     <div class="card-body">
       <?= $this->include('layouts/auth/auth_messages') ?>
       <?php if (session()->has('errors')): ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>Error:</strong>
+          <strong><i class="fas fa-exclamation-circle mr-2"></strong>
             <?php foreach(session('errors') as $error): ?>
               <li><?= $error; ?></li>
             <?php endforeach ?>

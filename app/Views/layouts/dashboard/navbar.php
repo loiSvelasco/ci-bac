@@ -44,9 +44,16 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-header"><?= current_user()->name ?></span>
           <div class="dropdown-divider"></div>
+          <?php if(current_user()->is_admin): ?>
+          <a href="<?= site_url('Admin/Users') ?>" class="dropdown-item">
+            <i class="fas fa-user-cog mr-2"></i>Users
+            <span class="float-right text-muted text-sm">Administration</span>
+          </a>
+          <?php endif ?>
+          <div class="dropdown-divider"></div>
           <a href="<?= site_url('Login/delete') ?>" class="dropdown-item">
             <i class="fas fa-sign-out-alt mr-2"></i>Log Out
-            <span class="float-right text-muted text-sm">Ends Session</span>
+            <span class="float-right text-muted text-sm">End Session</span>
           </a>
           <!-- <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> -->
