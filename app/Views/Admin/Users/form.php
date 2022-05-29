@@ -38,7 +38,11 @@
                                 </label>
                             </div>
                             <div class="col-3">
-                                <a onclick="return confirm('Are you sure you want to delete this user?')" href="<?= site_url("Admin/Users/delete/$user->id") ?>" class="btn btn-danger btn-block rounded-0"><i class="fas fa-trash mr-2"></i>Delete</a>
+                                <?php if(current_user()->id == $user->id): ?>
+                                    <a class="btn btn-danger btn-block rounded-0 disabled"><i class="fas fa-trash mr-2"></i>Delete</a>
+                                <?php else: ?>
+                                    <a onclick="return confirm('Confirmation \n\n\n\n Are you sure you want to delete this user?')" href="<?= site_url("Admin/Users/delete/$user->id") ?>" class="btn btn-danger btn-block rounded-0"><i class="fas fa-trash mr-2"></i>Delete</a>
+                                <?php endif ?>
                             </div>
                             <div class="col-3">
                                 <button class="btn btn-primary btn-block rounded-0"><i class="fas fa-save mr-2"></i>Save</button>

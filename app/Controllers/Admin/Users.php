@@ -118,6 +118,12 @@ class Users extends \App\Controllers\BaseController
 
     public function delete($id)
     {
+        if(current_user()->id == $id)
+        {
+            return redirect()->back()
+                             ->with('warning', 'You cannot delete yourself.');
+        }
+        
         $this->model->delete($id);
         return redirect()->to('/Admin/Users')
                              ->with('info', 'User deleted.');
