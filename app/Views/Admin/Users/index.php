@@ -1,7 +1,8 @@
 <?= $this->extend('layouts/dashboard/default') ?>
 <?= $this->section('title') ?>Dashboard<?= $this->endSection() ?>
+
 <?= $this->section('header') ?>Users
-<a href="<?= site_url('Admin/Users/new') ?>" class="btn btn-info rounded-0"><i class="fas fa-user-plus mr-2"></i>Add User</a>
+    <a href="<?= site_url('Admin/Users/new') ?>" class="btn btn-info rounded-0"><i class="fas fa-user-plus mr-2"></i>Add User</a>
 <?= $this->endSection() ?>
 
 
@@ -38,7 +39,7 @@
                             </td>
                         </tr>
                         <?php endforeach ?>
-                        <?php else: ?>
+                    <?php else: ?>
                     <?php endif ?>
                 </tbody>
             </table>

@@ -126,7 +126,7 @@ class Users extends \App\Controllers\BaseController
         
         $this->model->delete($id);
         return redirect()->to('/Admin/Users')
-                             ->with('info', 'User deleted.');
+                         ->with('info', 'User deleted.');
     }
 
     private function getUserOr404($id)

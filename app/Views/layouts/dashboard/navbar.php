@@ -44,12 +44,10 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-header"><?= current_user()->name ?></span>
           <div class="dropdown-divider"></div>
-          <?php if(current_user()->is_admin): ?>
-          <a href="<?= site_url('Admin/Users') ?>" class="dropdown-item">
-            <i class="fas fa-user-cog mr-2"></i>Users
-            <span class="float-right text-muted text-sm">Administration</span>
+          <a href="<?= site_url("Dashboard/profile/" . current_user()->id) ?>" class="dropdown-item">
+            <i class="fas fa-user mr-2"></i>Profile
+            <span class="float-right text-muted text-sm">Manage Account</span>
           </a>
-          <?php endif ?>
           <div class="dropdown-divider"></div>
           <a href="<?= site_url('Login/delete') ?>" class="dropdown-item">
             <i class="fas fa-sign-out-alt mr-2"></i>Log Out
