@@ -4,12 +4,7 @@
 
 <div class="login-box">
   <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="<?= site_url('/') ?>" class="h1"><b>BAC</b>Monitoring</a>
-      <p>
-        <small><?php echo $_ENV['APP_DESCRIPTION']; ?></small>
-      </p>
-    </div>
+    <?= $this->include('layouts/auth/auth_login_header') ?>
     <div class="card-body">
       <?= $this->include('layouts/auth/auth_messages') ?>
       <?php if (session()->has('errors')): ?>

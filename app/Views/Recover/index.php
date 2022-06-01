@@ -3,12 +3,7 @@
 <?= $this->section('content') ?>
 <div class="login-box">
   <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="<?= site_url('/') ?>" class="h1"><b>BAC</b>Monitoring</a>
-      <p>
-          <small><?php echo $_ENV['APP_DESCRIPTION']; ?></small>
-      </p>
-    </div>
+  <?= $this->include('layouts/auth/auth_login_header') ?>
     <div class="card-body">
       <p class="login-box-msg">You are only one step a way from your new password, recover your password now.</p>
       <form action="login.html" method="post">
