@@ -6,7 +6,6 @@ use App\Entities\User;
 
 class Users extends \App\Controllers\BaseController
 {
-    public $breadcrumb;
     private $model;
     // private $db;
 

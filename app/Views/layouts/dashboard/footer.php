@@ -2,8 +2,8 @@
     <!-- Control sidebar content goes here -->
     <div class="p-3">
         <h5>About</h5>
-        <p>BAC Monitoring Application</p>
-        <p>Designed by Louis Velasco</p>
+        <h6>BAC Monitoring Application</h6>
+        <p>Designed and developed by Louis Velasco</p>
     </div>
 </aside>
 <!-- /.control-sidebar -->

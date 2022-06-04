@@ -36,6 +36,15 @@ $routes->get('Register', 'Register::index', ['filter' => 'guest']);
 $routes->get('Login', 'Login::index', ['filter' => 'guest']);
 $routes->get('Logout', 'Login::delete');
 
+$routes->group('Dashboard', ['filter' => 'login'], static function ($routes) {
+    $routes->get('profile', 'Dashboard::profile');
+    $routes->get('editprofile', 'Dashboard::editprofile');
+});
+
+$routes->group('Admin', ['filter' => 'login'], static function ($routes) {
+    $routes->get('Users', 'Admin/Users::index');
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

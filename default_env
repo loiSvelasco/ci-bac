@@ -137,7 +137,7 @@ database.default.password = DnKUQ@qzcIuglS3L
 # DASHBOARD
 #--------------------------------------------------------------------
 
-APP_DESCRIPTION = 'Schools Division of Ilocos Norte'
+APP_DESCRIPTION = 'SuperIgniter - Loisv'
 HASH_SECRET_KEY = 'N40AUKS3OQp50JCmhm5GDhtxHbAf5QDD'
 DASH_SIDEBAR_TITLE = 'LOISV'
 LOGIN_HEADER = '<b>BAC</b>Monitring'
