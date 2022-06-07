@@ -42,7 +42,7 @@ $routes->group('Dashboard', ['filter' => 'login'], static function ($routes) {
 });
 
 $routes->group('Admin', ['filter' => 'login'], static function ($routes) {
-    $routes->get('Users', 'Admin/Users::index');
+    $routes->get('Users', 'Admin\Users::index');
 });
 
 /*

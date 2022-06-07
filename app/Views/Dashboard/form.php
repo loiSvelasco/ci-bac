@@ -16,5 +16,8 @@
                         <input type="password" name="password_confirmation" id="password_conf" class="form-control">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary btn-block rounded-0"><i class="fas fa-save mr-2"></i>Save</button>
+                        <div class="row">
+                            <div class="col-6"><a href="<?= site_url('Dashboard/profile') ?>" class="btn btn-light btn-block rounded-0"><i class="fas fa-arrow-left mr-2"></i>Back</a></div>
+                            <div class="col-6"><button class="btn btn-primary btn-block rounded-0"><i class="fas fa-save mr-2"></i>Save</button></div>
+                        </div>
                     </div>

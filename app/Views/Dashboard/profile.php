@@ -7,7 +7,7 @@
     .profile-image {
         position: relative;
         width: 200px;
-        height: 200px;
+        border-radius: 50%;
     }
 
     .image {
@@ -23,8 +23,8 @@
         transition: .1s ease;
         opacity: 0;
         position: absolute;
-        top: 10%;
-        right: 1%;
+        bottom: 0%;
+        left: 50%;
         transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
         text-align: center;
@@ -43,37 +43,51 @@
 
 <?= $this->section('main') ?>
 
-<a href="<?= site_url('Dashboard/editprofile') ?>" class="btn btn-info rounded-0 mb-4"><i class="fa fa-edit mr-2"></i>Edit</a>
-
-<br>
-
-<?php if($user->profile_image): ?>
-    <div class="profile-image">
-        <img src="<?= site_url("/Actions/ProfileImage/show"); ?>" alt="Profile Image" class="image" width="200" height="200">
-        <div class="top-right">
-            <a class="text-dark" href="" data-toggle="modal" data-target="#profileImg"><i class="fas fa-edit"></i></a>
-            <a class="text-dark" href="<?= site_url('Actions/ProfileImage/delete') ?>"><i class="fas fa-trash"></i></a>
+<div class="row">
+  <div class="col-lg-4 col-md-12">
+    <div class="card card-primary card-outline">
+      <div class="card-body box-profile">
+        <div class="text-center">
+          <?php if($user->profile_image): ?>
+              <div class="profile-image mx-auto">
+                  <img src="<?= site_url("/Actions/ProfileImage/show"); ?>"
+                       alt="Profile Image" 
+                       class="image profile-user-img img-fluid img-circle" 
+                       width="200" 
+                       height="200">
+                  <div class="top-right">
+                      <a class="text-dark" href="" data-toggle="modal" data-target="#profileImg"><i class="fas fa-edit"></i></a>
+                      <a class="text-dark" href="<?= site_url('Actions/ProfileImage/delete') ?>"><i class="fas fa-trash"></i></a>
+                  </div>
+              </div>
+          <?php else: ?>
+              <div class="profile-image mx-auto">
+                  <img src="<?= site_url("/images/blank_profile.png"); ?>" 
+                       alt="Profile Image" 
+                       class="image profile-user-img img-fluid img-circle" 
+                       width="200"
+                       height="200">
+                  <div class="top-right">
+                      <a class="text-dark" href="" data-toggle="modal" data-target="#profileImg"><i class="fas fa-edit"></i></a>
+                  </div>
+              </div>
+          <?php endif; ?>
         </div>
-    </div>
-<?php else: ?>
-    <div class="profile-image">
-        <img src="<?= site_url("/images/blank_profile.png"); ?>" alt="Profile Image" class="image" width="200" height="200">
-        <div class="top-right">
-            <a class="text-dark" href="" data-toggle="modal" data-target="#profileImg"><i class="fas fa-edit"></i></a>
+        <p class="h3 profile-username text-center mb-0"><?= esc($user->name) ?></p>
+        <p class="text-muted text-center"><?= esc($user->email) ?></p>
+      </div>
+      <div class="card-footer border-0">
+        <div class="float-right">
+          <a href="<?= site_url('Dashboard/editprofile') ?>" class="text-primary"><i class="fa fa-edit mr-2"></i></a>
         </div>
+        <span class="small text-muted text-center">Updated <?= $user->updated_at->humanize() ?></span>
+      </div>
     </div>
-<?php endif; ?>
+  </div>
+  <div class="col-8">
 
-<dl>
-    <dt>Name</dt>
-    <dd><?= esc($user->name) ?></dd>
-    <dt>Email</dt>
-    <dd><?= esc($user->email) ?></dd>
-    <dt>Created At</dt>
-    <dd><?= $user->created_at->humanize() ?></dd>
-    <dt>Updated At</dt>
-    <dd><?= $user->updated_at->humanize() ?></dd>
-</dl>
+  </div>
+</div>
 
 <?= $this->endSection() ?>
 
@@ -82,7 +96,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content rounded-0">
       <div class="modal-header border-0">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Image</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Profile Image</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

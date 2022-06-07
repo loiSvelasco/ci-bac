@@ -6,7 +6,6 @@
   <div class="card card-outline card-primary">
     <?= $this->include('layouts/auth/auth_login_header') ?>
     <div class="card-body">
-      <?= $this->include('layouts/auth/auth_messages') ?>
       <?php if (session()->has('errors')): ?>
         <div class="alert alert-danger fade show" role="alert">
           <strong>Error:</strong>
