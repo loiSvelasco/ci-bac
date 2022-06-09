@@ -1,8 +1,11 @@
 <?= $this->extend('layouts/dashboard/default') ?>
 <?= $this->section('title') ?>Dashboard<?= $this->endSection() ?>
 
-<?= $this->section('header') ?>Users
+<?= $this->section('header') ?>
+Users
+<div class="float-right">
     <a href="<?= site_url('Admin/Users/new') ?>" class="btn btn-info rounded-0"><i class="fas fa-user-plus mr-2"></i>Add User</a>
+</div>
 <?= $this->endSection() ?>
 
 
@@ -20,7 +23,8 @@
                         <th>Email</th>
                         <th>Administrator</th>
                         <th>Active</th>
-                        <th>Sign-up Date</th>
+                        <th>Created</th>
+                        <th>Updated</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -33,6 +37,7 @@
                             <td><?= $user->is_admin ? 'Yes' : 'No' ?></td>
                             <td><?= $user->is_active ? 'Yes' : 'No' ?></td>
                             <td><?= $user->created_at->humanize() ?></td>
+                            <td><?= $user->updated_at->humanize() ?></td>
                             <td>
                                 <a href="<?= site_url("Admin/Users/show/$user->id") ?>"><i class="fas fa-eye mr-2"></i></a>
                                 <a href="<?= site_url("Admin/Users/edit/$user->id") ?>"><i class="fas fa-edit"></i></a>

@@ -5,15 +5,27 @@ namespace App\Controllers\Actions;
 class ProfileImage extends \App\Controllers\BaseController
 {
     private $user;
+    private $model;
 
     public function __construct()
     {
         $this->user = service('auth')->getCurrentUser();
+        $this->model = new \App\Models\UserModel;
     }
 
-    public function update()
+    public function update($id = null)
     {
         $file = $this->request->getFile('image');
+        $redirectLink = 'Dashboard/profile';
+
+        if($id)
+        {
+            if($this->user->is_admin)
+            {
+                $this->user = $this->model->find($id);
+                $redirectLink = "Admin/Users/show/" . $this->user->id;
+            }
+        }
 
         if( ! $file->isValid())
         {
@@ -62,12 +74,24 @@ class ProfileImage extends \App\Controllers\BaseController
         $model->protect(false)
               ->save($this->user);
 
-        return redirect()->to('Dashboard/profile')
+        
+        return redirect()->to($redirectLink)
                          ->with('success', 'Profile image updated.');
     }
 
-    public function delete()
+    public function delete($id = null)
     {
+        $redirectLink = 'Dashboard/profile';
+
+        if($id)
+        {
+            if($this->user->is_admin)
+            {
+                $this->user = $this->model->find($id);
+                $redirectLink = "Admin/Users/show/" . $this->user->id;
+            }
+        }
+
         $path = WRITEPATH . 'uploads/profile_images/' . $this->user->profile_image;
 
         if( ! $this->user->profile_image)
@@ -88,12 +112,20 @@ class ProfileImage extends \App\Controllers\BaseController
         $model->protect(false)
               ->save($this->user);
 
-        return redirect()->to('Dashboard/profile')
+        return redirect()->to($redirectLink)
                          ->with('info', 'Profile image deleted.');
     }
 
-    public function show()
+    public function show($id = null)
     {
+        if($id)
+        {
+            if($this->user->is_admin)
+            {
+                $this->user = $this->model->find($id);
+            }
+        }
+
         if($this->user->profile_image)
         {
             $path = WRITEPATH . "uploads/profile_images/{$this->user->profile_image}";
@@ -107,6 +139,10 @@ class ProfileImage extends \App\Controllers\BaseController
 
             readfile($path);
             exit;
+        }
+        else
+        {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("😠 no snooping!");
         }
     }
 }

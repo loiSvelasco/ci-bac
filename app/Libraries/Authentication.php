@@ -22,10 +22,10 @@ class Authentication
            return false;
         }
 
-        // if( ! $user->is_active)
-        // {
-        //     return false;
-        // }
+        if( ! $user->is_active)
+        {
+            return false;
+        }
         
         $this->loginUser($user);
         
@@ -79,8 +79,7 @@ class Authentication
         $model = new \App\Models\UserModel;
         $user = $model->find(session()->get('user_id'));
     
-        // if($user && $user->is_active)
-        if($user)
+        if($user && $user->is_active)
         {
             return $user;
         }
@@ -107,8 +106,7 @@ class Authentication
         $user_model = new \App\Models\UserModel;
         $user = $user_model->find($remembered_login['user_id']);
 
-        // if($user && $user->is_active)
-        if($user)
+        if($user && $user->is_active)
         {
             $this->loginUser($user);
             return $user;

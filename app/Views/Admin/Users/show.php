@@ -1,6 +1,10 @@
 <?= $this->extend('layouts/dashboard/default') ?>
 <?= $this->section('title') ?>Dashboard<?= $this->endSection() ?>
-<?= $this->section('header') ?>Users<?= $this->endSection() ?>
+
+<?= $this->section('header') ?>
+<a href="<?= site_url("Admin/Users/") ?>" class="btn btn-light rounded-0"><i class="fa fa-arrow-left"></i></a>
+Users
+<?= $this->endSection() ?>
 
 <?= $this->section('css') ?>
 <style>
@@ -50,14 +54,14 @@
         <div class="text-center">
           <?php if($user->profile_image): ?>
               <div class="profile-image mx-auto">
-                  <img src="<?= site_url("/Actions/ProfileImage/show"); ?>"
+                  <img src="<?= site_url("/Actions/ProfileImage/show/$user->id"); ?>"
                        alt="Profile Image" 
                        class="image profile-user-img img-fluid img-circle" 
                        width="200" 
                        height="200">
                   <div class="top-right">
                       <a class="text-dark" href="" data-toggle="modal" data-target="#profileImg"><i class="fas fa-edit"></i></a>
-                      <a class="text-dark" href="<?= site_url('Actions/ProfileImage/delete') ?>"><i class="fas fa-trash"></i></a>
+                      <a class="text-dark" href="<?= site_url("Actions/ProfileImage/delete/$user->id") ?>"><i class="fas fa-trash"></i></a>
                   </div>
               </div>
           <?php else: ?>
@@ -88,5 +92,29 @@
 
   </div>
 </div>
+<?= $this->endSection() ?>
 
+
+<?= $this->section('modals') ?>
+<div class="modal fade" data-backdrop="static" id="profileImg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-0">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Profile Image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?= form_open_multipart("Actions/ProfileImage/update/$user->id", 'id="profileimg"') ?>
+            <input class="file-input" type="file" name="image">
+        </form>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <button type="submit" form="profileimg" class="btn btn-success rounded-0">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <?= $this->endSection() ?>

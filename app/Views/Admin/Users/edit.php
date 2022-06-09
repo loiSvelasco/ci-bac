@@ -1,6 +1,9 @@
 <?= $this->extend('layouts/dashboard/default') ?>
 <?= $this->section('title') ?>Edit User<?= $this->endSection() ?>
-<?= $this->section('header') ?>Edit <?= $user->name ?><?= $this->endSection() ?>
+<?= $this->section('header') ?>
+<a href="<?= site_url("Admin/Users/") ?>" class="btn btn-light rounded-0"><i class="fa fa-arrow-left"></i></a>
+Edit <?= $user->name ?>
+<?= $this->endSection() ?>
 
 
 <?= $this->section('main') ?>
