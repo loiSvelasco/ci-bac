@@ -43,6 +43,15 @@
 
 <?= $this->section('main') ?>
 
+<?php if ($userDetails === null) :?>
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong><i class="fas fa-info-circle mr-2"></i></strong> Complete your profile!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php endif; ?>
+
 <div class="row">
   <div class="col-lg-4 col-md-12">
     <div class="card card-primary card-outline">
@@ -84,8 +93,20 @@
       </div>
     </div>
   </div>
-  <div class="col-8">
-
+  <div class="col-lg-8 col-md-12">
+    <div class="card card-primary card-outline">
+      <div class="card-body box-profile">
+        
+      </div>
+      <div class="card-footer border-0">
+        <div class="float-right">
+          <a href="<?= site_url('Dashboard/editdetails') ?>" class="text-primary"><i class="fa fa-edit mr-2"></i></a>
+        </div>
+        <?php if ($userDetails !== null) :?>
+        <span class="small text-muted text-center">Updated <?= $userDetails->updated_at->humanize() ?></span>
+        <?php endif; ?>
+      </div>
+    </div>
   </div>
 </div>
 
