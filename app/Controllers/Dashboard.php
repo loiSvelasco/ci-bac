@@ -40,7 +40,11 @@ class Dashboard extends BaseController
 
     public function editdetails()
     {
-        // $this->details = new UserDetail;
+
+        if( ! $this->details)
+        {
+            $this->details = new UserDetail;
+        }
 
         return view('Dashboard/editdetails', [
             'user' => $this->user,
