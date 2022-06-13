@@ -24,6 +24,7 @@ class AddUserDetails extends Migration
                 'constraint' => 11,
                 'unsigned' => true,
                 'null' => false,
+                'unique' => true,
             ],
 
             'address' => [

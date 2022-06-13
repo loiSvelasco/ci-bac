@@ -7,6 +7,10 @@ use CodeIgniter\Model;
 class UserDetailsModel extends Model
 {
     protected $table = 'user_details';
+
+    protected $primaryKey = 'user_id';
+    protected $useAutoIncrement = false;
+
     protected $allowedFields = [
         'user_id',
         'address',
@@ -17,6 +21,7 @@ class UserDetailsModel extends Model
         'twitter',
         'instagram'
     ];
+
     protected $useTimestamps = true;
     protected $returnType = 'App\Entities\UserDetail';
 

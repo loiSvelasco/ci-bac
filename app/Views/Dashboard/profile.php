@@ -96,7 +96,12 @@
   <div class="col-lg-8 col-md-12">
     <div class="card card-primary card-outline">
       <div class="card-body box-profile">
-        
+        <p class="h5">Address:</p>
+        <p class="text-muted"><?= $userDetails->address; ?></p>
+        <p class="h5">Phone:</p>
+        <p class="text-muted"><?= $userDetails->phone; ?></p>
+        <p class="h5">Birthday:</p>
+        <p class="text-muted"><?= $userDetails->date_of_birth; ?></p>
       </div>
       <div class="card-footer border-0">
         <div class="float-right">

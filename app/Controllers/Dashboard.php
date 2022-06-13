@@ -54,14 +54,36 @@ class Dashboard extends BaseController
 
     public function updatedetails()
     {
-        $newDetails = new UserDetail($this->request->getPost());
-        $newDetails->user_id = (int) $this->user->id;
-        $newDetails->date_of_birth = date('Y-m-d', strtotime($this->request->getPost('date_of_birth')));
+        if($this->details) // if user details exist, update it
+        {
+            $updateDetails = $this->detailsModel->getDetails($this->user->id);
+            $detailPost = $this->request->getPost();
 
-        if($this->detailsModel->save($newDetails))
+            $updateDetails->fill($detailPost);
+
+            if( ! $updateDetails->hasChanged())
+            {
+                return redirect()->back()
+                                 ->with('warning', 'No changes made.');
+            }
+
+            if($this->detailsModel->protect(false)
+                                  ->save($updateDetails))
+            {
+                return redirect()->to('Dashboard/profile')
+                                 ->with('info', 'User details updated successfully.');
+            }
+        }
+
+        // else, if user details do not exist, create it
+
+        $userDetails = new UserDetail($this->request->getPost());
+        $userDetails->user_id = $this->user->id;
+
+        if($this->detailsModel->save($userDetails))
         {
             return redirect()->to('Dashboard/profile')
-                             ->with('success', 'User details updated.');
+                             ->with('success', 'User details added.');
         }
         else
         {
