@@ -14,8 +14,7 @@ class Dashboard extends BaseController
         $this->user = service('auth')->getCurrentUser();
         $this->model = new \App\Models\UserModel;
         $this->detailsModel = new \App\Models\UserDetailsModel;
-        $this->details = $this->detailsModel->getDetails($this->user->id);
-        
+        $this->details = $this->detailsModel->getDetails($this->user->id);   
     }
 
     public function index()

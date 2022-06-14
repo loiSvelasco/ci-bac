@@ -43,15 +43,6 @@
 
 <?= $this->section('main') ?>
 
-<?php if ($userDetails === null) :?>
-<div class="alert alert-info alert-dismissible fade show" role="alert">
-    <strong><i class="fas fa-info-circle mr-2"></i></strong> Complete your profile!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<?php endif; ?>
-
 <div class="row">
   <div class="col-lg-4 col-md-12">
     <div class="card card-primary card-outline">
@@ -96,12 +87,18 @@
   <div class="col-lg-8 col-md-12">
     <div class="card card-primary card-outline">
       <div class="card-body box-profile">
-        <p class="h5">Address:</p>
-        <p class="text-muted"><?= $userDetails->address; ?></p>
-        <p class="h5">Phone:</p>
-        <p class="text-muted"><?= $userDetails->phone; ?></p>
-        <p class="h5">Birthday:</p>
-        <p class="text-muted"><?= $userDetails->date_of_birth; ?></p>
+        <?php if($userDetails !== null): ?>
+          <p class="h5">Address:</p>
+          <p class="text-muted"><?= $userDetails->address; ?></p>
+          <p class="h5">Phone:</p>
+          <p class="text-muted"><?= $userDetails->phone; ?></p>
+          <p class="h5">Birthday:</p>
+          <p class="text-muted"><?= $userDetails->date_of_birth; ?></p>
+        <?php else: ?>
+          <div class="alert alert-light" role="alert">
+              <strong><i class="fas fa-info-circle mr-2"></i></strong> Complete your profile.
+          </div>
+        <?php endif; ?>
       </div>
       <div class="card-footer border-0">
         <div class="float-right">
